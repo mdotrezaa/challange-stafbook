@@ -28,10 +28,12 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
+    "@nuxtjs/pwa",
   ],
-  serverMiddleware: [{ path: "/api", handler: "~/server/index.js" }],
+  serverMiddleware: [{ path: "/api", handler: "~/api/app.js" }],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
