@@ -4,6 +4,10 @@
     {
       "src": "api/routes/**/*.js",
       "use": "@now/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
     }
   ],
   "build": {
@@ -13,7 +17,10 @@
   },
   "routes": [
     { "src": "/api/hello(.*)", "dest": "api/routes/hello" },
+    { "src": "/api/stocks(.*)", "dest": "api/routes/stocks" },
     { "src": "/api/(.*)", "dest": "api/routes/$1" },
-    { "src": "/api", "dest": "api/routes/index.js" }
+    { "src": "/api", "dest": "api/routes/index.js" },
+    { "src": "/_nuxt/.+", "headers": { "cache-control": "s-maxage=31536000" } },
+    { "src": "/(.*)", "dest": "$1" }
   ]
 }

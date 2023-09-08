@@ -1,10 +1,12 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
+  mode: "universal",
+
   target: "static",
   buildDir: "dist",
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "challange-stafbook",
+    title: "TradeApp",
     htmlAttrs: {
       lang: "en",
     },
@@ -18,10 +20,8 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  css: ["@fortawesome/fontawesome-svg-core/styles.css"],
+  plugins: ["~/plugins/fontawesome.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
