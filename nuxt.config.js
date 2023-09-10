@@ -60,12 +60,12 @@ export default {
     strategies: {
       google: {
         clientId: process.env.CLIENT_ID,
-        redirectUri: process.env.BASEURL_DEV,
+        redirectUri: process.env.BASEURL,
         codeChallengeMethod: "",
         responseType: "code",
         endpoints: {
-          token: `${process.env.BASEURL_DEV}/google/callback`, // Route to handle token exchange
-          userInfo: `${process.env.BASEURL_DEV}/user/`,
+          token: `${process.env.BASEURL}/google/callback`, // Route to handle token exchange
+          userInfo: `${process.env.BASEURL}/user/`,
         },
       },
       local: {
