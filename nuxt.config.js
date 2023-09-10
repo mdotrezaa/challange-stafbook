@@ -54,19 +54,17 @@ export default {
   auth: {
     redirect: {
       login: "/auth",
-      logout: "/",
+      logout: "/auth",
+      callback: "/",
       home: "/",
     },
     strategies: {
       google: {
         clientId: process.env.CLIENT_ID,
-        redirectUri: process.env.BASEURL,
+        redirectUri: process.env.BASEURL_DEV,
         codeChallengeMethod: "",
-        responseType: "code",
-        endpoints: {
-          token: `${process.env.BASEURL}/google/callback`, // Route to handle token exchange
-          userInfo: `${process.env.BASEURL}/user/`,
-        },
+        scope: ["profile", "email"],
+        responseType: "token id_token",
       },
       local: {
         token: {

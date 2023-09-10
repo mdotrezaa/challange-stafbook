@@ -10,7 +10,9 @@
         </NuxtLink>
       </div>
       <div class="text-white">
-        <span v-if="$auth.loggedIn">Welcome, {{ $auth.user.username }}!</span>
+        <span v-if="$auth.loggedIn"
+          >Welcome, {{ $auth.user.username || $auth.user.name }}!</span
+        >
         <span v-else>
           <!-- You can add login or registration links here -->
         </span>
