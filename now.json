@@ -17,7 +17,10 @@
   },
   "routes": [
     { "src": "/api/hello(.*)", "dest": "api/routes/hello" },
+    { "src": "/api/login(.*)", "dest": "api/routes/auth" },
+    { "src": "/api/user(.*)", "dest": "api/routes/auth" },
     { "src": "/api/stocks(.*)", "dest": "api/routes/stocks" },
+    { "src": "/api/google(.*)", "dest": "api/routes/auth-external" },
     { "src": "/api/(.*)", "dest": "api/routes/$1" },
     { "src": "/api", "dest": "api/routes/index.js" },
     { "src": "/_nuxt/.+", "headers": { "cache-control": "s-maxage=31536000" } },

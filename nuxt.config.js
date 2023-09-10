@@ -29,15 +29,62 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     "@nuxtjs/axios",
+    "@nuxtjs/auth-next",
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/pwa",
   ],
-  serverMiddleware: [{ path: "/api", handler: "~/api/app.js" }],
+  serverMiddleware: [{ path: "/api", handler: "~/api/routes/auth/index.js" }],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next"],
+  router: {
+    middleware: ["auth"],
+    extendRoutes(routes, resolve) {
+      routes.push(
+        // Your protected routes here
+        {
+          name: "home",
+          path: "/",
+          component: resolve(__dirname, "pages/"),
+        }
+      );
+    },
+  },
+  auth: {
+    redirect: {
+      login: "/auth",
+      logout: "/",
+      home: "/",
+    },
+    strategies: {
+      google: {
+        clientId: process.env.CLIENT_ID,
+        redirectUri: process.env.BASEURL_DEV,
+        codeChallengeMethod: "",
+        responseType: "code",
+        endpoints: {
+          token: `${process.env.BASEURL_DEV}/google/callback`, // Route to handle token exchange
+          userInfo: `${process.env.BASEURL_DEV}/user/`,
+        },
+      },
+      local: {
+        token: {
+          property: "token",
+          global: true,
+          // required: true,
+          type: "Bearer",
+        },
 
+        endpoints: {
+          login: { url: "/api/login", method: "post" },
+          user: { url: "/api/user", method: "get", propertyName: false },
+        },
+      },
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ["defu"],
+  },
 };

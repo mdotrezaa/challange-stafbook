@@ -14,7 +14,6 @@
           >
             Price
           </th>
-          <!-- Add more table headers as needed -->
         </tr>
       </thead>
       <tbody>
