@@ -34,7 +34,6 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/pwa",
-    "@nuxtjs/fontawesome",
   ],
   serverMiddleware: [{ path: "/api", handler: "~/api/routes/auth/index.js" }],
   fontawesome: {
