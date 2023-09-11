@@ -1,39 +1,51 @@
 <template>
   <div
-    class="border border-gray-300 rounded-lg max-w-screen-md mx-auto p-6 min-h-[300px] flex justify-center flex-col gap-6"
+    class="bg-gradient-to-r from-blue-500 to-blue-300 min-h-screen flex items-center justify-center w-full"
   >
-    <p>Sign-In Options:</p>
-    <button
-      class="bg-blue-600 text-white py-2 px-4 rounded-lg flex items-center gap-2"
-      @click="loginWithGoogle"
-    >
-      <i class="fab fa-google"></i>
-      Sign in with Google
-    </button>
-    <div>
-      <form
-        @submit.prevent="userLogin"
-        class="flex flex-col gap-2 justify-between"
-      >
-        <div class="flex flex-col gap-2 justify-between">
-          <label class="text-sm">Username</label>
+    <div class="bg-white rounded-lg p-8 shadow-lg">
+      <h1 class="text-2xl font-semibold mb-4">Sign In</h1>
+
+      <!-- Sign-in options -->
+      <div class="mb-6">
+        <button
+          class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+          @click="loginWithGoogle"
+        >
+          <i class="fab fa-google"></i>
+          Sign in with Google
+        </button>
+      </div>
+
+      <!-- Or -->
+      <div class="flex items-center mb-4">
+        <div class="flex-grow border-t-2 border-gray-300"></div>
+        <div class="mx-4 text-gray-500">Or</div>
+        <div class="flex-grow border-t-2 border-gray-300"></div>
+      </div>
+
+      <!-- Username and Password Form -->
+      <form @submit.prevent="userLogin" class="space-y-4">
+        <div class="flex flex-col">
+          <label for="username" class="text-sm font-semibold">Username</label>
           <input
-            class="border-2 text-sm rounded-md p-1"
+            id="username"
+            class="border border-gray-300 rounded-md p-2"
             type="text"
             v-model="login.username"
           />
         </div>
-        <div class="flex flex-col gap-2 justify-between">
-          <label class="text-sm">Password</label>
+        <div class="flex flex-col">
+          <label for="password" class="text-sm font-semibold">Password</label>
           <input
-            class="border-2 text-sm rounded-md p-1"
+            id="password"
+            class="border border-gray-300 rounded-md p-2"
             type="password"
             v-model="login.password"
           />
         </div>
         <div>
           <button
-            class="flex items-center w-full justify-center space-x-2 bg-green-500 text-white rounded-lg py-1 px-2 text-sm"
+            class="w-full bg-green-500 text-white py-2 px-4 rounded-lg font-semibold text-sm"
             type="submit"
           >
             Login
@@ -79,3 +91,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* Add any additional styling here if needed */
+</style>

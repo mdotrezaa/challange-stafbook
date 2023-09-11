@@ -5,7 +5,7 @@ export default {
   target: "static",
   buildDir: "dist",
   http: {
-    baseURL: process.env.BASEURL_DEV, // Update with your API URL
+    baseURL: process.env.BASEURL, // Update with your API URL
   },
   head: {
     title: "TradeApp",
@@ -70,7 +70,7 @@ export default {
     strategies: {
       google: {
         clientId: process.env.CLIENT_ID,
-        redirectUri: `${process.env.BASEURL_DEV}/auth/callback`,
+        redirectUri: `${process.env.BASEURL}/auth/callback`,
         codeChallengeMethod: "",
         scope: ["profile", "email"],
         responseType: "token id_token",
