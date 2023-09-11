@@ -13,10 +13,16 @@ const stocks = [
   { name: "JPM", price: 170.5 },
   // Add more stocks here as needed
 ];
+
 function simulatePriceChange() {
-  for (const symbol in stocks) {
-    stocks[symbol].price += Math.random() * (10 - -10) + -10;
-  }
+  // Choose a random index in the stocks array
+  const randomIndex = Math.floor(Math.random() * stocks.length);
+
+  // Generate a random price change between -10 and 10
+  const priceChange = Math.random() * (10 - -10) + -10;
+
+  // Update the price of the selected stock
+  stocks[randomIndex].price += priceChange;
 }
 
 // Middleware to simulate price changes on each request

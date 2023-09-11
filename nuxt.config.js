@@ -4,7 +4,9 @@ export default {
 
   target: "static",
   buildDir: "dist",
-  // Global page headers: https://go.nuxtjs.dev/config-head
+  http: {
+    baseURL: process.env.BASEURL_DEV, // Update with your API URL
+  },
   head: {
     title: "TradeApp",
     htmlAttrs: {
@@ -21,8 +23,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@fortawesome/fontawesome-svg-core/styles.css"],
-  plugins: ["~/plugins/fontawesome.js"],
-
+  plugins: [{ src: "~/plugins/fontawesome.js", ssr: false }],
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -33,11 +34,19 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     "@nuxtjs/tailwindcss",
     "@nuxtjs/pwa",
+    "@nuxtjs/fontawesome",
   ],
   serverMiddleware: [{ path: "/api", handler: "~/api/routes/auth/index.js" }],
-
+  fontawesome: {
+    component: "Fa",
+    suffix: false,
+    icons: {
+      solid: true,
+      brands: true,
+    },
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios", "@nuxtjs/auth-next"],
+  modules: ["@nuxt/http", "@nuxtjs/axios", "@nuxtjs/auth-next"],
   router: {
     middleware: ["auth"],
     extendRoutes(routes, resolve) {
@@ -55,16 +64,22 @@ export default {
     redirect: {
       login: "/auth",
       logout: "/auth",
-      callback: "/",
+      callback: "/auth/callback",
       home: "/",
     },
     strategies: {
       google: {
         clientId: process.env.CLIENT_ID,
-        redirectUri: process.env.BASEURL_DEV,
+        redirectUri: `${process.env.BASEURL_DEV}/auth/callback`,
         codeChallengeMethod: "",
         scope: ["profile", "email"],
         responseType: "token id_token",
+        endpoints: {
+          user: {
+            url: "https://www.googleapis.com/oauth2/v3/userinfo",
+            method: "get",
+          },
+        },
       },
       local: {
         token: {

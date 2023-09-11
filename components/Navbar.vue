@@ -10,8 +10,9 @@
         </NuxtLink>
       </div>
       <div class="text-white">
-        <span v-if="$auth.loggedIn"
-          >Welcome, {{ $auth.user.username || $auth.user.name }}!</span
+        <template v-if="$auth.loggedIn">
+          <span>Welcome, {{ $auth.user.username || $auth.user.name }}!</span>
+          <span @click="logout">Logout</span></template
         >
         <span v-else>
           <!-- You can add login or registration links here -->
@@ -22,5 +23,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    async logout() {
+      await this.$auth.logout();
+      this.$router.push("/auth");
+    },
+  },
+};
 </script>

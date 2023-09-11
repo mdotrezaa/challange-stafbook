@@ -60,6 +60,7 @@ export default {
       try {
         await this.$auth.loginWith("google");
         // Redirect the user to the dashboard or any other route on successful login
+        this.$router.push("/"); // Redirect to the home page after successful login
       } catch (error) {
         console.error("Error logging in with Google:", error);
       }
