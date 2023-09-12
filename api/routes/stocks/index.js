@@ -1,16 +1,16 @@
 const app = require("../../app");
 
 const stocks = [
-  { name: "AAPL", price: 150.25 },
-  { name: "GOOGL", price: 2800.75 },
-  { name: "MSFT", price: 305.45 },
-  { name: "AMZN", price: 3400.6 },
-  { name: "TSLA", price: 750.0 },
-  { name: "FB", price: 350.15 },
-  { name: "NFLX", price: 560.2 },
-  { name: "NVDA", price: 225.8 },
-  { name: "CRM", price: 250.3 },
-  { name: "JPM", price: 170.5 },
+  { name: "AAPL", price: 150.25, timestamp: Date.now() },
+  { name: "GOOGL", price: 2800.75, timestamp: Date.now() },
+  { name: "MSFT", price: 305.45, timestamp: Date.now() },
+  { name: "AMZN", price: 3400.6, timestamp: Date.now() },
+  { name: "TSLA", price: 750.0, timestamp: Date.now() },
+  { name: "FB", price: 350.15, timestamp: Date.now() },
+  { name: "NFLX", price: 560.2, timestamp: Date.now() },
+  { name: "NVDA", price: 225.8, timestamp: Date.now() },
+  { name: "CRM", price: 250.3, timestamp: Date.now() },
+  { name: "JPM", price: 170.5, timestamp: Date.now() },
   // Add more stocks here as needed
 ];
 

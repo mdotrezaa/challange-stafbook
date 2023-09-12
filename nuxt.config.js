@@ -44,8 +44,14 @@ export default {
       brands: true,
     },
   },
+  image: {
+    // Default values for the image component
+    default: {
+      quality: 80, // Image quality (0-100)
+    },
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/http", "@nuxtjs/axios", "@nuxtjs/auth-next"],
+  modules: ["@nuxt/http", "@nuxtjs/axios", "@nuxtjs/auth-next", "@nuxt/image"],
   router: {
     middleware: ["auth"],
     extendRoutes(routes, resolve) {

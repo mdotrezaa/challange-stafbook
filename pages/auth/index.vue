@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="bg-gradient-to-r from-blue-500 to-blue-300 min-h-screen flex items-center justify-center w-full"
-  >
-    <div class="bg-white rounded-lg p-8 shadow-lg">
+  <div class="bg-gray-900 min-h-screen flex items-center justify-center w-full">
+    <div class="bg-white rounded-lg p-8 shadow-lg min-w-[400px]">
       <h1 class="text-2xl font-semibold mb-4">Sign In</h1>
 
       <!-- Sign-in options -->
@@ -32,6 +30,7 @@
             class="border border-gray-300 rounded-md p-2"
             type="text"
             v-model="login.username"
+            placeholder="johndoe"
           />
         </div>
         <div class="flex flex-col">
@@ -41,6 +40,7 @@
             class="border border-gray-300 rounded-md p-2"
             type="password"
             v-model="login.password"
+            placeholder="john"
           />
         </div>
         <div>

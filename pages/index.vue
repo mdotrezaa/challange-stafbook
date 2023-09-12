@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <table class="min-w-[400px] divide-y divide-gray-200 text-center">
+  <div class="flex items-center justify-center p-5 gap-5">
+    <table class="min-w-[500px] divide-y divide-gray-200 text-center">
       <thead>
         <tr>
           <th
@@ -71,8 +71,9 @@ export default {
   methods: {
     fetchStocks() {
       this.$axios.$get("/api/stocks").then((response) => {
+        const timestamp = Date.now();
         this.previousPrices = { ...this.stocks };
-        this.stocks = response.data;
+        this.stocks = { ...response.data, timestamp };
       });
     },
     formatPrice(price) {
