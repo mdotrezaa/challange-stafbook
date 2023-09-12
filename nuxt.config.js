@@ -5,7 +5,7 @@ export default {
   target: "static",
   buildDir: "dist",
   http: {
-    baseURL: process.env.BASEURL, // Update with your API URL
+    baseURL: process.env.BASEURL,
   },
   head: {
     title: "TradeApp",
